@@ -1,0 +1,34 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="300" height="300" fill="#0F172B" rx="20" ry="20"/>
+  
+  <!-- Stylized window/template frame -->
+  <rect x="60" y="80" width="180" height="140" fill="none" stroke="#00DC82" stroke-width="8" rx="12" ry="12"/>
+  
+  <!-- UI Elements inside the frame -->
+  <rect x="80" y="110" width="140" height="20" fill="#00DC82" rx="4" ry="4" opacity="0.8"/>
+  <rect x="80" y="145" width="70" height="20" fill="#00DC82" rx="4" ry="4" opacity="0.6"/>
+  <rect x="160" y="145" width="60" height="20" fill="#00DC82" rx="4" ry="4" opacity="0.6"/>
+  <rect x="80" y="180" width="140" height="20" fill="#00DC82" rx="4" ry="4" opacity="0.4"/>
+  
+  <!-- Browser-like controls -->
+  <circle cx="75" cy="90" r="5" fill="#00DC82"/>
+  <circle cx="90" cy="90" r="5" fill="#00DC82" opacity="0.8"/>
+  <circle cx="105" cy="90" r="5" fill="#00DC82" opacity="0.6"/>
+  
+  <!-- Code bracket elements symbolizing templates -->
+  <path d="M40,130 L55,115 L40,100" fill="none" stroke="#00DC82" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M260,130 L245,115 L260,100" fill="none" stroke="#00DC82" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Connecting dots to represent connections/components -->
+  <circle cx="150" cy="50" r="8" fill="#00DC82"/>
+  <circle cx="150" cy="250" r="8" fill="#00DC82"/>
+  <circle cx="40" cy="150" r="8" fill="#00DC82"/>
+  <circle cx="260" cy="150" r="8" fill="#00DC82"/>
+  
+  <!-- Connecting lines -->
+  <line x1="150" y1="58" x2="150" y2="80" stroke="#00DC82" stroke-width="3" opacity="0.6"/>
+  <line x1="150" y1="220" x2="150" y2="242" stroke="#00DC82" stroke-width="3" opacity="0.6"/>
+  <line x1="48" y1="150" x2="60" y2="150" stroke="#00DC82" stroke-width="3" opacity="0.6"/>
+  <line x1="240" y1="150" x2="252" y2="150" stroke="#00DC82" stroke-width="3" opacity="0.6"/>
+</svg>

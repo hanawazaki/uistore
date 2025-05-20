@@ -11,13 +11,19 @@
         </ULink>
         <header>
           <ULink :to="`categories/${props.id}`" class="block p-4">
-            <h2 class="text-lg font-semibold text-gray-800">{{props.title}}</h2>
+            <h2 class="text-lg font-semibold text-gray-800">
+              {{ props.title }}
+            </h2>
           </ULink>
           <div class="flex items-center justify-between p-4">
-            <ULink :to="`categories/${props.id}`" class="text-sm text-blue-500 hover:underline">
+            <ULink
+              :to="`categories/${props.id}`"
+              class="text-sm text-blue-500 hover:underline"
+            >
               View More
             </ULink>
-            <span class="text-sm text-gray-500">{{props.count}} items</span>
+            <span class="text-sm text-gray-500">{{ props.count }} items</span>
+          </div>
         </header>
       </div>
     </div>
@@ -26,23 +32,23 @@
 
 <script lang="ts" setup>
 const props = defineProps({
-  id:{
-    type:Number,
-    required:true
+  id: {
+    type: Number,
+    required: true,
   },
-  title:{
-    type:String,
-    required:true
+  title: {
+    type: String,
+    required: true,
   },
-  count:{
-    type:Number,
-    required:true
+  count: {
+    type: Number,
+    required: true,
   },
-  image:{
-    type:String,
-    required:true
+  image: {
+    type: String,
+    required: true,
   },
-})
+});
 </script>
 
 <style></style>

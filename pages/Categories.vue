@@ -30,7 +30,7 @@ interface Category {
   name: string;
   slug: string;
   thumbnails: string;
-  products_count?: number;
+  products_count: number;
 }
 
 const {

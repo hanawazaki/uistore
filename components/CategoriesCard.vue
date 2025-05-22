@@ -3,7 +3,7 @@
     <div class="overflow-hidden bg-white rounded-xl">
       <div>
         <ULink
-          :to="`categories/${props.id}`"
+          :to="`category/${props.slug}`"
           class="transition duration-300 ease-in-out transform hover:scale-105"
         >
           <img
@@ -13,14 +13,14 @@
           />
         </ULink>
         <header>
-          <ULink :to="`categories/${props.id}`" class="block p-4">
+          <ULink :to="`category/${props.slug}`" class="block p-4">
             <h2 class="text-lg font-semibold text-gray-800">
               {{ props.title }}
             </h2>
           </ULink>
           <div class="flex items-center justify-between p-4">
             <ULink
-              :to="`categories/${props.id}`"
+              :to="`category/${props.slug}`"
               class="text-sm text-blue-500 hover:underline"
             >
               View More
@@ -37,6 +37,10 @@
 const props = defineProps({
   id: {
     type: Number,
+    required: true,
+  },
+  slug: {
+    type: String,
     required: true,
   },
   title: {

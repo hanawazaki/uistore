@@ -14,6 +14,7 @@
       v-for="category in displayedCategories"
       :key="category.id"
       :id="category.id"
+      :slug="slugify(category.name)"
       :title="category.name"
       :count="category.products_count"
       :image="category.thumbnails"
@@ -42,6 +43,17 @@ interface CategoryResponse {
     data: Category[];
   };
 }
+
+const slugify = (text: string): string => {
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/[^\w\-]+/g, "") // Remove all non-word chars
+    .replace(/\-\-+/g, "-") // Replace multiple - with single -
+    .replace(/^-+/, "") // Trim - from start of text
+    .replace(/-+$/, ""); // Trim - from end of text
+};
 
 const {
   data: categories,

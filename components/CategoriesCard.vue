@@ -2,10 +2,13 @@
   <div class="w-full px-1 my-1 md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
     <div class="overflow-hidden bg-white rounded-xl">
       <div>
-        <ULink :to="`categories/${props.id}`">
+        <ULink
+          :to="`categories/${props.id}`"
+          class="transition duration-300 ease-in-out transform hover:scale-105"
+        >
           <img
             class="object-cover w-full h-48"
-            src="/assets/images/cat1.png"
+            :src="`${props.image}`"
             alt="category 1"
           />
         </ULink>

@@ -3,6 +3,7 @@
     <NavMenu />
     <slot />
   </div>
+  <Footer />
 </template>
 
 <script setup></script>

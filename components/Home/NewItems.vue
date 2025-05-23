@@ -10,7 +10,13 @@
       <p>Failed to load new items</p>
     </div>
 
-    <NewItemsCard v-for="newItem in displayedNewItems" />
+    <NewItemsCard
+      v-for="newItem in displayedNewItems"
+      :key="newItem.id"
+      :id="newItem.id"
+      :thumbnails="newItem.thumbnails"
+      :name="newItem.name"
+    />
   </div>
 </template>
 
@@ -23,26 +29,26 @@ const props = defineProps({
 });
 
 interface NewItem {
-  id: Number;
-  name: String;
-  subtitle: String;
-  description: String;
-  thumbnails: String;
-  is_figma: 1;
-  is_sketch: 1;
-  features: String;
-  users_id: Number;
-  categories_id: Number;
-  file: String;
+  id: number;
+  name: string;
+  subtitle: string;
+  description: string;
+  thumbnails: string;
+  is_figma: number;
+  is_sketch: number;
+  features: string;
+  users_id: number;
+  categories_id: number;
+  file: string;
   category: {
-    id: Number;
-    name: String;
-    thumbnails: String;
+    id: number;
+    name: string;
+    thumbnails: string;
   };
   galleries: {
-    id: Number;
-    products_id: Number;
-    url: String;
+    id: number;
+    products_id: number;
+    url: string;
   };
 }
 
@@ -69,8 +75,6 @@ const displayedNewItems = computed(() => {
   if (!newItems.value) return [];
   return newItems.value.data.data;
 });
-
-console.log(displayedNewItems.value);
 </script>
 
 <style></style>

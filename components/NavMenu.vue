@@ -24,17 +24,7 @@ const items = ref<NavigationMenuItem[]>([
   <div
     class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
   >
-    <a href="#" class="flex items-center">
-      <img
-        src="/assets/images/ui-template-logo.svg"
-        alt="Logo"
-        class="w-16 h-16"
-      />
-      <span
-        class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-        >UIStore</span
-      >
-    </a>
+    <Logo />
 
     <button
       data-collapse-toggle="navbar-default"

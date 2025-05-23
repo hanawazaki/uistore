@@ -1,11 +1,11 @@
 <template>
-  <div>kategori {{ categorySlug }}</div>
+  <div>kategori {{ id }}</div>
 </template>
 
 <script lang="ts" setup>
 const route = useRoute();
 
-const categorySlug = route.params.id;
+const id = route.params.id;
 </script>
 
 <style></style>

@@ -11,13 +11,14 @@
     </div>
 
     <CategoriesCard
-      v-for="category in displayedCategories"
+      v-for="(category, index) in displayedCategories"
       :key="category.id"
       :id="category.id"
       :slug="slugify(category.name)"
       :title="category.name"
       :count="category.products_count"
       :image="category.thumbnails"
+      :aos-delay="index * 200"
     />
   </div>
 </template>

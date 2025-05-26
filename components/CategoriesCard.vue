@@ -1,5 +1,8 @@
 <template>
-  <div class="w-full px-1 my-1 md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
+  <div
+    :data-aos-delay="aosDelay"
+    class="w-full px-1 my-1 md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4"
+  >
     <div class="overflow-hidden bg-white rounded-xl">
       <ULink
         :to="`category/${props.id}`"
@@ -46,6 +49,10 @@ const props = defineProps({
   image: {
     type: String,
     required: true,
+  },
+  aosDelay: {
+    type: Number,
+    default: 0,
   },
 });
 </script>

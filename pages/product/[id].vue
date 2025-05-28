@@ -29,7 +29,7 @@
                   <div class="flex mb-2">
                     <div>
                       <img
-                        src="/assets/img/icon-figma.png"
+                        src="../../assets/images/icon-figma.png"
                         alt=""
                         class="w-16"
                       />
@@ -44,7 +44,7 @@
                   <div class="flex mb-2">
                     <div>
                       <img
-                        src="/assets/img/icon-sketch.png"
+                        src="../../assets/images/icon-sketch.png"
                         alt=""
                         class="w-16"
                       />
@@ -96,8 +96,15 @@
         </div>
       </div>
     </template>
+    <template v-else-if="hasError">
+      <div class="error">Failed to load product</div>
+    </template>
     <template v-else>
-      <p>Loading...</p>
+      <div class="animate-pulse">
+        <div class="h-8 bg-gray-300 rounded mb-4"></div>
+        <div class="h-4 bg-gray-300 rounded mb-2"></div>
+        <div class="h-64 bg-gray-300 rounded"></div>
+      </div>
     </template>
   </main>
 </template>
@@ -109,8 +116,6 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 const dataDetail = ref({});
 // const category = ref({});
-const features = ref([]);
-
 // const user = computed(() => userStore.user);
 const isSubscriptionReady = ref(true);
 
@@ -128,18 +133,18 @@ const hasError = computed(() => {
   return error.value !== null;
 });
 
-const displayedProduct = computed(() => {
-  if (!detail.value?.data) return [];
-  features.value = detail.value?.data?.features
-    ? detail.value.data.features.split(",")
-    : [];
+const displayedProduct = computed(() => detail.value?.data || {});
+const features = computed(
+  () => displayedProduct.value?.features?.split(",") || []
+);
 
-  return detail.value.data;
+useSeoMeta({
+  title: () => displayedProduct.value?.name || "Product Details",
+  description: () => displayedProduct.value?.subtitle || "Product description",
+  ogTitle: () => displayedProduct.value?.name,
+  ogDescription: () => displayedProduct.value?.subtitle,
+  ogImage: () => displayedProduct.value?.thumbnails?.[0] || "",
 });
-
-// if(data.value){
-//   dataDetail.value = data.value
-// }
 </script>
 
 <style></style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap -mx-1 lg:-mx-4">
+  <div class="grid grid-cols-3 gap-10">
     <!-- Loading -->
     <div v-if="pending" class="text-center py-12">
       <p>Loading...</p>

@@ -35,7 +35,8 @@ export default defineNuxtConfig({
         'brand'
       ]
     }
-  }
+  },
+     loading: false,
 })
 
 // Type declaration untuk autocompletion

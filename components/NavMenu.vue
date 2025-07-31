@@ -57,7 +57,8 @@ const items = ref<NavigationMenuItem[]>([
       >
         <ULink as="button" to="/">Home</ULink>
         <ULink as="button" to="/category">Categories</ULink>
-        <ULink as="button">FAQ</ULink>
+        <ULink as="button" to="/pricing">Pricing</ULink>
+        <ULink as="button" to="/faq">FAQ</ULink>
       </div>
     </div>
 

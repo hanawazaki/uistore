@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-gray-800 dark:text-white">
     <NavMenu />
     <slot />
   </div>

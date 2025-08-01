@@ -55,7 +55,7 @@ const items = ref<AccordionItem[]>([
 </script>
 
 <template>
-  <div class="max-w-screen-xl mx-auto px-4 my-16">
+  <div class="max-w-screen-lg mx-auto px-8 my-16">
     <h1 class="text-2xl font-bold mb-4">Frequently Asked Questions</h1>
     <p class="mb-8">Here are some common questions and answers to help you.</p>
     <UAccordion :collapsible="false" :items="items" />

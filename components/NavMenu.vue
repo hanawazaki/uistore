@@ -64,6 +64,7 @@ const items = ref<NavigationMenuItem[]>([
 
     <div class="flex flex-row items-center space-x-3">
       <UButton
+        to="/login"
         size="lg"
         color="primary"
         variant="outline"

@@ -64,14 +64,18 @@ const items = ref<NavigationMenuItem[]>([
 
     <div class="flex flex-row items-center space-x-3">
       <UButton
-        to="/login"
+        to="/loginPage"
         size="lg"
         color="primary"
         variant="outline"
         class="whitespace-nowrap hover:cursor-pointer"
         >Sign In</UButton
       >
-      <UButton size="lg" class="whitespace-nowrap hover:cursor-pointer"
+
+      <UButton
+        to="/registerPage"
+        size="lg"
+        class="whitespace-nowrap hover:cursor-pointer"
         >Sign Up</UButton
       >
     </div>

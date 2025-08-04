@@ -2,16 +2,7 @@
   <div
     class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4"
   >
-    <UCard
-      :ui="{
-        base: 'w-full max-w-md text-center',
-        ring: 'ring-1 ring-gray-200 dark:ring-gray-800',
-        divide: 'divide-y-0',
-        header: { padding: 'py-8' },
-        body: { padding: 'py-8' },
-        footer: { padding: 'py-8' },
-      }"
-    >
+    <UCard>
       <template #header>
         <div class="flex flex-col items-center">
           <UIcon
@@ -37,7 +28,6 @@
           size="xl"
           color="primary"
           variant="solid"
-          :ui="{ rounded: 'rounded-full' }"
         />
       </template>
     </UCard>
@@ -45,7 +35,6 @@
 </template>
 
 <script setup lang="ts">
-// Mengatur judul halaman di tab browser
 useHead({
   title: "Sukses",
   meta: [{ name: "description", content: "Halaman konfirmasi keberhasilan." }],

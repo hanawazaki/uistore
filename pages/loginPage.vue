@@ -9,11 +9,9 @@
         <div class="mb-8 flex justify-start w-full">
           <Logo class="mb-6" variant="dark" />
         </div>
-        <h1 class="mb-4 text-2xl font-bold">Register</h1>
-        <p class="mb-6 text-gray-600">
-          Please enter your details to create an account
-        </p>
-        <RegisterForm />
+        <h1 class="mb-4 text-2xl font-bold">Login</h1>
+        <p class="mb-6 text-gray-600">Please enter your details to login</p>
+        <LoginForm />
       </div>
 
       <div
@@ -30,7 +28,10 @@
 </template>
 
 <script lang="ts" setup>
-import RegisterForm from "~/components/registerForm.vue";
+import LoginForm from "~/components/loginForm.vue";
+definePageMeta({
+  layout: "auth",
+});
 </script>
 
 <style></style>

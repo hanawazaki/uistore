@@ -31,6 +31,10 @@
 
 <script lang="ts" setup>
 import RegisterForm from "~/components/registerForm.vue";
+
+definePageMeta({
+  layout: "auth",
+});
 </script>
 
 <style></style>

@@ -25,7 +25,7 @@
 
     <p class="mt-4 text-sm text-gray-500">
       Already have an account?
-      <NuxtLink to="/loginpage" class="text-white">Login here</NuxtLink>
+      <NuxtLink to="/login" class="text-white">Login here</NuxtLink>
     </p>
   </UForm>
 </template>

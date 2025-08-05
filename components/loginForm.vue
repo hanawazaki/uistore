@@ -2,7 +2,7 @@
   <UForm
     :schema="schema"
     :state="state"
-    class="w-full p-4 space-y-4 rounded-lg shadow-md"
+    class="w-full p-4 space-y-4 rounded-lg"
     @submit="onSubmit"
   >
     <UFormField label="Email" name="email">
@@ -25,7 +25,7 @@
 
     <p class="mt-4 text-sm text-gray-500">
       Don't have an account?
-      <NuxtLink to="/registerpage" class="text-white">Register here</NuxtLink>
+      <NuxtLink to="/register" class="text-white">Register here</NuxtLink>
     </p>
   </UForm>
 </template>

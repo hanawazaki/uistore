@@ -33,6 +33,7 @@
 <script lang="ts" setup>
 import * as z from "zod";
 import type { FormSubmitEvent } from "@nuxt/ui";
+import axios from "axios";
 
 const schema = z.object({
   email: z.string().email("Invalid email"),
@@ -46,13 +47,30 @@ const state = reactive<Partial<Schema>>({
   password: undefined,
 });
 
+const userStore = useMyUserStore();
 const toast = useToast();
+
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  toast.add({
-    title: "Success",
-    description: "The form has been submitted.",
-    color: "success",
-  });
+  try {
+    const response = await axios.post(
+      "http://zullkit-backend-main.test/api/login",
+      {
+        email: event.data.email,
+        password: event.data.password,
+      }
+    );
+
+    localStorage.setItem("access_token", response.data.access_token);
+    localStorage.setItem("token_type", response.data.token_type);
+
+    userStore.fetchUser();
+
+    toast.add({
+      title: "Success",
+      description: "The form has been submitted.",
+      color: "success",
+    });
+  } catch (error) {}
   console.log(event.data);
 }
 </script>

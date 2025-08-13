@@ -1,44 +1,90 @@
-import axios from 'axios';
 import { defineStore } from 'pinia'
-
-interface User{
-  id: Number,
-  name:String,
-  email:String
+import axios from 'axios'
+export interface User {
+  id: number
+  name: string
+  email: string
+  profile_photo_url?: string
 }
 
-interface MyUserState {
-  user: User | false;
-  loading: boolean;
+export interface UserState {
+  user: User | null
+  loading: boolean
 }
 
-export const useMyUserStore = defineStore('user',{
-  state:  (): MyUserState => ({
-    user:false,
+export const useMyUserStore = defineStore('user', {
+  state: (): UserState => ({
+    user: null,
     loading: false
-   }),
- getters:{
-  isLoggedIn: (state): boolean => state.user !== false,
-    getUser: (state): User | false => state.user,
- },
- actions: {
-    async fetchUser(): Promise<void> {
-      const router = useRouter()
+  }),
+
+  getters: {
+    isLoggedIn: (state): boolean => state.user !== null,
+    getUser: (state): User | null => state.user
+  },
+
+  actions: {
+    setUser(user: User | null) {
+      this.user = user
+    },
+
+    setLoading(loading: boolean) {
+      this.loading = loading
+    },
+
+    async fetchUser() {
+      // Skip di server-side
+      if (process.server) return
+
+      this.loading = true
 
       try {
-        this.loading = true
-        const { data } = await axios.get<User>('http://zullkit-backend-main.test/api/user', {
+        const tokenType = localStorage.getItem('token_type')
+        const accessToken = localStorage.getItem('access_token')
+
+        if (!tokenType || !accessToken) {
+          this.user = null
+          this.loading = false
+          await navigateTo('/login')
+          return
+        }
+
+        
+        
+        const { data } = await axios.get('http://zullkit-backend-main.test/api/user', {
           headers: {
-            Authorization: `${localStorage.getItem('token_type') || ''} ${localStorage.getItem('access_token') || ''}`
-          },
+            Authorization: `${tokenType} ${accessToken}`
+          }
         })
+console.log('User data fetched:', data.data)
         this.user = data
       } catch (error) {
-        this.user = false
-        router.push('/login')
+        console.error('Fetch user error:', error)
+        this.user = null
+        
+        // Clear tokens
+        if (process.client) {
+          localStorage.removeItem('token_type')
+          localStorage.removeItem('access_token')
+        }
+        
+        await navigateTo('/login')
       } finally {
         this.loading = false
       }
     },
-  },
+
+    async logout() {
+      if (process.server) return
+
+      this.user = null
+      
+      if (process.client) {
+        localStorage.removeItem('token_type')
+        localStorage.removeItem('access_token')
+      }
+      
+      await navigateTo('/login')
+    }
+  }
 })

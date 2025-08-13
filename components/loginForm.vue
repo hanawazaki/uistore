@@ -20,7 +20,7 @@
       size="lg"
       class="justify-center cursor-pointer"
     >
-      Save
+      Login
     </UButton>
 
     <p class="mt-4 text-sm text-gray-500">
@@ -34,6 +34,8 @@
 import * as z from "zod";
 import type { FormSubmitEvent } from "@nuxt/ui";
 import axios from "axios";
+
+const router = useRouter();
 
 const schema = z.object({
   email: z.string().email("Invalid email"),
@@ -52,6 +54,7 @@ const toast = useToast();
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   try {
+    console.log("Form submitted with data:", event.data);
     const response = await axios.post(
       "http://zullkit-backend-main.test/api/login",
       {
@@ -60,10 +63,14 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       }
     );
 
-    localStorage.setItem("access_token", response.data.access_token);
-    localStorage.setItem("token_type", response.data.token_type);
+    // console.log("respon access_token ", response.data);
+    // console.log("respon token_type", response.data.token_type);
+
+    localStorage.setItem("access_token", response.data.data.access_token);
+    localStorage.setItem("token_type", response.data.data.token_type);
 
     userStore.fetchUser();
+    router.push("/");
 
     toast.add({
       title: "Success",

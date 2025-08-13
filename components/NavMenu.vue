@@ -1,6 +1,21 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
 
+const userStore = useMyUserStore();
+const isLoggedIn = computed(() => userStore.isLoggedIn);
+const user = computed(() => userStore.user);
+const isLoading = computed(() => userStore.loading);
+
+onMounted(async () => {
+  const hasTokens =
+    localStorage.getItem("token_type") && localStorage.getItem("access_token");
+  console.log("user", user);
+
+  if (hasTokens && !userStore.user) {
+    await userStore.fetchUser();
+  }
+});
+
 const items = ref<NavigationMenuItem[]>([
   {
     label: "Home",
@@ -62,7 +77,15 @@ const items = ref<NavigationMenuItem[]>([
       </div>
     </div>
 
-    <div class="flex flex-row items-center space-x-3">
+    <div v-if="isLoading" class="flex items-center space-x-2">
+      <div
+        class="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-900"
+      ></div>
+      <span class="text-sm text-gray-600">Loading...</span>
+    </div>
+
+    <UserInfo v-else-if="isLoggedIn && user" :user="user" />
+    <div v-else class="flex flex-row items-center space-x-3">
       <UButton
         to="/login"
         size="lg"

@@ -21,6 +21,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   modules: ['@nuxt/ui', 'nuxt-aos', '@pinia/nuxt', '@nuxtjs/color-mode'],
+  ssr: false,
+  nitro: {
+    experimental: {
+      wasm: true
+    }
+  },
   css: ['~/assets/css/main.css'],
   ui: {
     theme: {

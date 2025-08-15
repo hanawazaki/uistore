@@ -9,8 +9,6 @@ const isLoading = computed(() => userStore.loading);
 onMounted(async () => {
   const hasTokens =
     localStorage.getItem("token_type") && localStorage.getItem("access_token");
-  console.log("user", user);
-
   if (hasTokens && !userStore.user) {
     await userStore.fetchUser();
   }

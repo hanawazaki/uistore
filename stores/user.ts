@@ -48,16 +48,13 @@ export const useMyUserStore = defineStore('user', {
           await navigateTo('/login')
           return
         }
-
-        
         
         const { data } = await axios.get('http://zullkit-backend-main.test/api/user', {
           headers: {
             Authorization: `${tokenType} ${accessToken}`
           }
         })
-console.log('User data fetched:', data.data)
-        this.user = data
+        this.user = data.data
       } catch (error) {
         console.error('Fetch user error:', error)
         this.user = null

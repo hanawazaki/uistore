@@ -54,7 +54,6 @@ const toast = useToast();
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   try {
-    console.log("Form submitted with data:", event.data);
     const response = await axios.post(
       "http://zullkit-backend-main.test/api/login",
       {
@@ -62,9 +61,6 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         password: event.data.password,
       }
     );
-
-    // console.log("respon access_token ", response.data);
-    // console.log("respon token_type", response.data.token_type);
 
     localStorage.setItem("access_token", response.data.data.access_token);
     localStorage.setItem("token_type", response.data.data.token_type);

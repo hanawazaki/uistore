@@ -44,8 +44,8 @@ onMounted(() => {
 <template>
   <div class="relative" id="user-dropdown">
     <div class="flex items-center">
-      <div class="mr-2 text-sm font-medium text-gray-900 hidden sm:block">
-        Halo, {{ user.name }}
+      <div class="mr-2 text-sm font-medium hidden sm:block">
+        Halo, {{ userStore.user?.name }}
       </div>
 
       <button
